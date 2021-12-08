@@ -1,0 +1,12 @@
+= render "search"
+.ul.mx-auto.mt-10.bg-gray-100{class: "w-1/2"}
+  .grid.grid-cols-5.text-center.text-3xl.bg-gray-400.py-2.rounded-t-md
+    %p From:
+    %p To:
+    %p Date:
+    %p Departure:
+    %p Duration:
+  - if @flights
+    - puts "FLIGHT"
+    - @flights.each do |f|
+      = render "flight", flight: f

@@ -1,0 +1,8 @@
+.bg-gray-200.mx-auto.h-20
+  = form_with scope: :search, url: "/flights", method: :get do |f|
+    .inline-flex.gap-4.w-full.text-2xl
+      = f.collection_select :departure_ap_id, @airports, :id, :code, { include_blank: "Departure", selected: params[:search][:departure_ap_id] }, { class: "h-20 flex-grow text-center" }
+      = f.collection_select :arrival_ap_id, @airports, :id, :code, { include_blank: "Arrival", selected: params[:search][:arrival_ap_id] }, { class: "h-20 flex-grow text-center" }
+      = f.collection_select :date, Flight.select(:date).order(:date), :date, :date, { include_blank: "Date", selected: params[:search][:date]}, { class: "h-20 flex-grow text-center" }
+      = f.select :passenger_count, (1..4), { include_blank: "Passengers", selected: params[:search][:passenger_count] }, { class: "h-20 flex-grow text-center" }
+      = f.submit "Search", class: "flex-grow cursor-pointer hover:bg-gray-300"

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure_ap_id: 
+  arrival_ap_id: 
+  start: 2021-12-06 11:35:05
+  duration: 2021-12-06 11:35:05
+
+two:
+  departure_ap_id: 
+  arrival_ap_id: 
+  start: 2021-12-06 11:35:05
+  duration: 2021-12-06 11:35:05
