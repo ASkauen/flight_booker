@@ -1,0 +1,18 @@
+= form_with url: new_bookings_path, method: :get do |f|
+  = f.hidden_field :passengers, value: params[:search][:passenger_count] || "0"
+  .grid.grid-rows-auto.bg-gray-100
+    = f.collection_radio_buttons :flight_id, flights, :id, :date do |b|
+      - b.label(class: "text-2xl") do
+        .inline-flex.w-full.text-center.cursor-pointer.py-3.shadow-md.my-2.hover:bg-gray-200
+          .grid.grid-cols-5.flex-grow
+            %p #{b.object.departure_ap.code}
+            %p #{b.object.arrival_ap.code}
+            %p #{b.object.date.to_s}
+            %p #{b.object.formatted_departure}
+            %p #{b.object.formatted_duration}
+          %p #{b.radio_button(class: "w-7 h-7 mr-5")}
+  - if flights.any?
+    = f.submit "Next", class: "block w-64 mx-auto py-3 bg-green-300 my-4 rounded-md cursor-pointer hover:bg-green-400"
+  - else
+    .text-gray-400.mt-20.text-2xl.italic.text-center
+      No flights matched your search

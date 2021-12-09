@@ -1,6 +1,5 @@
 class Flight < ApplicationRecord
-  attr_accessor :passenger_count
-
+  has_many :bookings
   belongs_to :arrival_ap, class_name: 'Airport'
   belongs_to :departure_ap, class_name: 'Airport'
 

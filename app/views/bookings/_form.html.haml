@@ -1,0 +1,10 @@
+= form_with model: @booking do |f|
+  = f.hidden_field :flight_id, value: @flight.id
+  .grid.grid-rows-auto.gap-2
+    = f.fields_for :passengers, @passengers do |p|
+      .text-xl.font-medium.text-center
+        Passenger #{p.options[:child_index] + 1}
+      .grid.grid-cols-2.gap-4
+        = p.text_field :name, placeholder: "Name", class: "border-2 shadow-lg border-gray-300 rounded-md text-center h-12", autofocus: true
+        = p.email_field :email, placeholder: "E-Mail", class: "border-2  shadow-lg border-gray-300 rounded-md text-center h-12", autofocus: true
+    = f.submit "Book flight", class: "w-1/3 py-2 bg-green-300 rounded-md text-xl mx-auto mt-7 cursor-pointer hover:bg-green-400"

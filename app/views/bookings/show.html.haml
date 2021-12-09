@@ -1,0 +1,23 @@
+.text-center.text-5xl.italic.font-medium.mt-10
+  Booking ##{@booking.id}
+.text-center.text-3xl.italic.font-medium.mt-10.underline
+  For flight ##{@flight.id}
+.grid.grid-cols-2.mx-auto.mt-5.text-2xl{class: "w-1/3"}
+  .text-right.mr-3
+    %p From:
+    %p To:
+    %p Date:
+    %p Departure:
+  .ml-3
+    %p #{ @flight.departure_ap.code}
+    %p #{ @flight.arrival_ap.code}
+    %p #{ @flight.date}
+    %p #{ @flight.formatted_departure}
+.block.mx-auto
+  .text-center.text-4xl.mt-7.mb-3
+    Passenger#{"s" if @booking.passengers.count > 1}:
+  .grid.grid-rows-auto.mx-auto.gap-3{class: "w-max"}
+    - @booking.passengers.each do |p|
+      .text-center.text-2xl.border.px-3.py-3.rounded-md.shadow-md
+        %p Name: #{ p.name}
+        %p E-Mail: #{ p.email}

@@ -8,7 +8,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../application.css"
+import {flashTimeout} from "../custom/flashTimeout";
+import {validateFields} from "../custom/validateFields";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+window.addEventListener("load", function() {
+    flashTimeout()
+    validateFields()
+})
+
